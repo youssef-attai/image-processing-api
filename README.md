@@ -23,6 +23,7 @@ where FILENAME is one of the following images name (without the extension, only 
   - icelandwaterfall.jpg
   - palmtunnel.jpg
   - santamonica.jpg
+ 
 and WIDTH and HEIGHT are just the dimensions of the resized image
 
 ## Authors
