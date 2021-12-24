@@ -4,8 +4,8 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 var express_1 = __importDefault(require("express"));
-var imageProcessing_1 = __importDefault(require("./utilities/imageProcessing"));
-var errorHandling_1 = __importDefault(require("./utilities/errorHandling"));
+var imageProcessing_1 = __importDefault(require("./imageProcessing"));
+var errorHandling_1 = __importDefault(require("./errorHandling"));
 var fs_1 = __importDefault(require("fs"));
 var app = (0, express_1.default)();
 var port = 3000;

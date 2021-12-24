@@ -3,7 +3,7 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-var errorHandling_1 = __importDefault(require("../utilities/errorHandling"));
+var errorHandling_1 = __importDefault(require("../errorHandling"));
 describe('test validateInputs function', function () {
     it('expect validateInputs("", 200, 200) to return invalid', function () {
         expect((0, errorHandling_1.default)('', 200, 200).valid).toBeFalse;

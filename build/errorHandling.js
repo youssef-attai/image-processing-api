@@ -6,7 +6,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 var fs_1 = __importDefault(require("fs"));
 var validateInputs = function (filename, width, height) {
     var valid = true;
-    var message = "";
+    var message = '';
     if (!fs_1.default.existsSync(__dirname + "/images/".concat(filename, ".jpg"))) {
         valid = false;
         message += "No image found with name ".concat(filename, ".jpg <br>");

@@ -1,4 +1,4 @@
-import resizeImage from '../utilities/imageProcessing';
+import resizeImage from '../imageProcessing';
 
 describe('test resizeImage function', () => {
     it('expect resizeImage() to return relative path to resized image', () => {

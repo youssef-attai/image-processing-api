@@ -1,6 +1,6 @@
 import express from 'express';
-import resizeImage from './utilities/imageProcessing';
-import validateInputs from './utilities/errorHandling';
+import resizeImage from './imageProcessing';
+import validateInputs from './errorHandling';
 import fs from 'fs';
 
 const app = express();

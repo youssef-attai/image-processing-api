@@ -1,4 +1,4 @@
-import validateInputs from '../utilities/errorHandling';
+import validateInputs from '../errorHandling';
 
 describe('test validateInputs function', () => {
     it('expect validateInputs("", 200, 200) to return invalid', () => {
