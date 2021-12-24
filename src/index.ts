@@ -1,5 +1,6 @@
 import express from 'express';
-import sharp from 'sharp';
+import resizeImage from './imageProcessing';
+import validateInputs from './errorHandling';
 import fs from 'fs';
 
 const app = express();
@@ -14,9 +15,20 @@ app.get('/api', (req, res) => {
 });
 
 app.get('/api/image', (req, res) => {
+    if (!(req.query.filename && req.query.width && req.query.height)) {
+        res.send("Missing parameters, you have to pass: filename, width, height");
+        return;
+    }
+
     const filename = req.query.filename;
     const width = Number(req.query.width);
     const height = Number(req.query.height);
+
+    const isInputValid = validateInputs(filename as string, width, height);
+    if (!isInputValid.valid) {
+        res.send(isInputValid.message);
+        return;
+    }
 
     if (!fs.existsSync(__dirname + '/images/thumbs')) {
         fs.mkdirSync(__dirname + '/images/thumbs');
@@ -26,12 +38,9 @@ app.get('/api/image', (req, res) => {
         console.log('cached');
         res.sendFile(__dirname + `/images/thumbs/${filename}_${width}_${height}.jpg`);
     } else {
-        sharp(__dirname + `/images/${filename}.jpg`)
-            .resize(width, height)
-            .toFile(__dirname + `/images/thumbs/${filename}_${width}_${height}.jpg`, () => {
-                console.log('new');
-                res.sendFile(__dirname + `/images/thumbs/${filename}_${width}_${height}.jpg`);
-            });
+        resizeImage(filename as string, width, height, ()=>{ 
+            res.sendFile(__dirname + `/images/thumbs/${filename}_${width}_${height}.jpg`); 
+        });
     }
 });
 
