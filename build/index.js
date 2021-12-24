@@ -4,8 +4,8 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 var express_1 = __importDefault(require("express"));
-var imageProcessing_1 = __importDefault(require("./imageProcessing"));
-var errorHandling_1 = __importDefault(require("./errorHandling"));
+var imageProcessing_1 = __importDefault(require("./utilities/imageProcessing"));
+var errorHandling_1 = __importDefault(require("./utilities/errorHandling"));
 var fs_1 = __importDefault(require("fs"));
 var app = (0, express_1.default)();
 var port = 3000;
@@ -17,7 +17,11 @@ app.get('/api', function (req, res) {
 });
 app.get('/api/image', function (req, res) {
     if (!(req.query.filename && req.query.width && req.query.height)) {
-        res.send("Missing parameters, you have to pass: filename, width, height");
+        res.send('Missing parameters, you have to pass: filename, width, height');
+        return;
+    }
+    if (isNaN(Number(req.query.width)) || isNaN(Number(req.query.height))) {
+        res.send('Invalid width or height, make sure they are numbers greater than 0');
         return;
     }
     var filename = req.query.filename;
@@ -36,6 +40,7 @@ app.get('/api/image', function (req, res) {
         res.sendFile(__dirname + "/images/thumbs/".concat(filename, "_").concat(width, "_").concat(height, ".jpg"));
     }
     else {
+        console.log('new');
         (0, imageProcessing_1.default)(filename, width, height, function () {
             res.sendFile(__dirname + "/images/thumbs/".concat(filename, "_").concat(width, "_").concat(height, ".jpg"));
         });

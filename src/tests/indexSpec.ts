@@ -13,4 +13,9 @@ describe('test endpoints', () => {
         expect(response.status).toBe(200);
         done();
     });
+    it('expect GET /api/image?filename=fjord&width=200&height=200 to respond with status 200', async (done) => {
+        const response = await request.get('/api/image?filename=fjord&width=200&height=200');
+        expect(response.status).toBe(200);
+        done();
+    });
 });

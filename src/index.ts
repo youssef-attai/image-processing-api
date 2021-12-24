@@ -1,22 +1,27 @@
 import express from 'express';
-import resizeImage from './imageProcessing';
-import validateInputs from './errorHandling';
+import resizeImage from './utilities/imageProcessing';
+import validateInputs from './utilities/errorHandling';
 import fs from 'fs';
 
 const app = express();
 const port = 3000;
 
-app.get('/', (req, res) => {
+app.get('/', (req: express.Request, res: express.Response): void => {
     res.send('Image Processing API');
 });
 
-app.get('/api', (req, res) => {
+app.get('/api', (req: express.Request, res: express.Response): void => {
     res.send('try it out!<br><br>/api/image?filename={FILENAME}&width={WIDTH}&height={HEIGHT}');
 });
 
-app.get('/api/image', (req, res) => {
+app.get('/api/image', (req: express.Request, res: express.Response): void => {
     if (!(req.query.filename && req.query.width && req.query.height)) {
-        res.send("Missing parameters, you have to pass: filename, width, height");
+        res.send('Missing parameters, you have to pass: filename, width, height');
+        return;
+    }
+
+    if (isNaN(Number(req.query.width)) || isNaN(Number(req.query.height))) {
+        res.send('Invalid width or height, make sure they are numbers greater than 0');
         return;
     }
 
@@ -39,13 +44,13 @@ app.get('/api/image', (req, res) => {
         res.sendFile(__dirname + `/images/thumbs/${filename}_${width}_${height}.jpg`);
     } else {
         console.log('new');
-        resizeImage(filename as string, width, height, ()=>{ 
+        resizeImage(filename as string, width, height, () => {
             res.sendFile(__dirname + `/images/thumbs/${filename}_${width}_${height}.jpg`);
         });
     }
 });
 
-app.listen(port, () => {
+app.listen(port, (): void => {
     console.log(`server started at http://localhost:${port}`);
 });
 

@@ -1,13 +1,13 @@
-import fs from "fs"
+import fs from 'fs';
 
 type validation = {
-    valid: boolean,
-    message: string
-}
+    valid: boolean;
+    message: string;
+};
 
 const validateInputs = (filename: string, width: number, height: number): validation => {
     let valid = true;
-    let message = "";
+    let message = '';
 
     if (!fs.existsSync(__dirname + `/images/${filename}.jpg`)) {
         valid = false;
