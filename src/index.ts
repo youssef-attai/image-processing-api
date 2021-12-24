@@ -38,8 +38,9 @@ app.get('/api/image', (req, res) => {
         console.log('cached');
         res.sendFile(__dirname + `/images/thumbs/${filename}_${width}_${height}.jpg`);
     } else {
+        console.log('new');
         resizeImage(filename as string, width, height, ()=>{ 
-            res.sendFile(__dirname + `/images/thumbs/${filename}_${width}_${height}.jpg`); 
+            res.sendFile(__dirname + `/images/thumbs/${filename}_${width}_${height}.jpg`);
         });
     }
 });
