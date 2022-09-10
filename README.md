@@ -31,11 +31,11 @@ and WIDTH and HEIGHT are just the dimensions of the resized image
 Youssef Galal Atta'i
 
 ## Acknowledgments
-- [https://www.yonisfy.com/udacity/projects/image-processing-api]
-- [https://stackoverflow.com/a/67755220]
-- [https://flaviocopes.com/how-to-check-if-file-exists-node/]
-- [https://www.geeksforgeeks.org/node-js-fs-mkdirsync-method/]
-- [https://stackoverflow.com/a/59915072]
-- [https://expressjs.com/en/guide/writing-middleware.html]
-- [https://www.typescriptlang.org/docs/handbook/2/objects.html]
-- [https://expressjs.com/en/guide/error-handling.html]
+- https://www.yonisfy.com/udacity/projects/image-processing-api
+- https://stackoverflow.com/a/67755220
+- https://flaviocopes.com/how-to-check-if-file-exists-node/
+- https://www.geeksforgeeks.org/node-js-fs-mkdirsync-method/
+- https://stackoverflow.com/a/59915072
+- https://expressjs.com/en/guide/writing-middleware.html
+- https://www.typescriptlang.org/docs/handbook/2/objects.html
+- https://expressjs.com/en/guide/error-handling.html
