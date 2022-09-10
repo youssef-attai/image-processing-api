@@ -4,11 +4,11 @@ A simple API for resizing images.
 
 ## Technologies used
 
-- TypeScript [https://www.typescriptlang.org/]
-- Node.js [https://nodejs.org/en/]
-- Express.js [https://expressjs.com/]
-- Jasmine [https://jasmine.github.io/]
-- Sharp [https://sharp.pixelplumbing.com/]
+- [Typescript](https://www.typescriptlang.org/)
+- [Node.js](https://nodejs.org/en/)
+- [Express.js](https://expressjs.com/)
+- [Jasmine](https://jasmine.github.io/)
+- [Sharp](https://sharp.pixelplumbing.com/)
 
 ## How to use
 
